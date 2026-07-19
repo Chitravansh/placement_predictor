@@ -42,7 +42,7 @@ uvicorn main:app --reload
 
 ### 3. Open the frontend
 
-Navigate to `http://127.0.0.1:8000/home` in your browser.
+Navigate to `http://127.0.0.1:8000` in your browser.
 
 ## API
 
@@ -70,11 +70,11 @@ Navigate to `http://127.0.0.1:8000/home` in your browser.
 
 ### `GET /`
 
-Returns a basic health check response.
-
-### `GET /home`
-
 Serves the frontend page.
+
+### `GET /api`
+
+Returns a basic health check response.
 
 ## Deployment on Render
 

@@ -25,12 +25,12 @@ class Student(BaseModel):
     iq: float 
 
 @app.get("/")
-def read_root():
-    return {"Hello":"World"}
-
-@app.get("/home")
 def serve_frontend():
     return FileResponse("templates/index.html")
+
+@app.get("/api")
+def read_root():
+    return {"Hello":"World"}
 
 @app.post("/predict")
 def predict(student: Student ):
