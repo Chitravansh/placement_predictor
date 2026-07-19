@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import pickle 
 import numpy as np 
@@ -22,12 +24,13 @@ class Student(BaseModel):
     cgpa: float
     iq: float 
 
-    
-
-
 @app.get("/")
 def read_root():
     return {"Hello":"World"}
+
+@app.get("/home")
+def serve_frontend():
+    return FileResponse("templates/index.html")
 
 @app.post("/predict")
 def predict(student: Student ):
@@ -41,6 +44,4 @@ def predict(student: Student ):
         "placement" : int(prediction[0])
     }
 
-
-# @app.post("/predict")
-# def predi t
+app.mount("/static", StaticFiles(directory="templates"), name="static")

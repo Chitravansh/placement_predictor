@@ -1,13 +1,11 @@
 
-const API = " http://127.0.0.1:8000"
-
 async function predict (){
 
     const cgpa = document.getElementById("cgpa").value;
 
     const iq = document.getElementById("iq").value;
 
-    const response = await fetch(API + "/predict",{
+    const response = await fetch("/predict",{
         method : "POST",
         headers:{
             "Content-Type":"application/json"

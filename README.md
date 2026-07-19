@@ -40,11 +40,9 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The API will be available at `http://127.0.0.1:8000`.
-
 ### 3. Open the frontend
 
-Open `templates/index.html` in a browser. Make sure the backend is running.
+Navigate to `http://127.0.0.1:8000/home` in your browser.
 
 ## API
 
@@ -73,6 +71,33 @@ Open `templates/index.html` in a browser. Make sure the backend is running.
 ### `GET /`
 
 Returns a basic health check response.
+
+### `GET /home`
+
+Serves the frontend page.
+
+## Deployment on Render
+
+1. Push your repo to GitHub
+2. Go to [render.com](https://render.com) → **New Web Service**
+3. Connect your GitHub repo
+4. Configure:
+
+| Setting | Value |
+|---------|-------|
+| Language | Python 3 |
+| Build Command | `pip install -r requirements.txt` |
+| Start Command | `uvicorn main:app --host 0.0.0.0 --port $PORT` |
+
+5. Click **Deploy**
+
+Once live, your app will be available at:
+
+- `https://your-app.onrender.com/docs` — Swagger UI
+- `https://your-app.onrender.com/home` — Frontend
+- `https://your-app.onrender.com/predict` — API endpoint
+
+**Note:** Free tier apps sleep after 15 minutes of inactivity. First request after idle takes 30-60s to cold start.
 
 ## Tech Stack
 
